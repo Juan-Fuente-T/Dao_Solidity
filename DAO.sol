@@ -72,7 +72,7 @@ contract Governance {
  
         // Ejecutar la propuesra, realmente habria que hacer Delegate call en lugar de llamar a la función
         IPayload(propuesta.payload).execute();//se envuelve la direccion de payload en la interface y se llama a execute()
-        //se da valor ejecutado positivo la propuesta
+        //se da valor ejecutado positivo a la propuesta
         propuesta.ejecutado = true;
     }
  
