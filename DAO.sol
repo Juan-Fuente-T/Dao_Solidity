@@ -43,7 +43,7 @@ contract Governance {
         //funcion para votar propuestas, toma por parametro el numero para identificar propuesta y el voto
         function votarPropuesta(uint256 id, uint256 voto) public {
         Propuesta storage propuesta = propuestas[id];
-        //se evalua que ¿¿¿¿¿¿¿se haya votado ya, por defecto esta en false????????????
+        //se evalua que no se haya votado ya, por defecto esta en false
         require(!propuesta.votado[msg.sender], "Ya has votado!");
         //se evalua que el voto no sea mayor que 3, si lo es seria erroneo
         require(voto < 3, "Voto incorrecto");
@@ -61,14 +61,17 @@ contract Governance {
         propuesta.votado[msg.sender] = true;
     }
  
-     
+ //funcion para ejecutarv las propuestas
  function ejecutarPropuesta(uint256 id) public {
+        //Se inicializa una variable tipo Propuesta con su id
         Propuesta storage propuesta = propuestas[id];
- 
+        //evalua que la propuesta no este ejecutada, en cuyo caso da error
         require(!propuesta.ejecutado, "Esta propuesta ya se ha ejecutado");
+        //evalua que el numero de votos positivos sea suficiente para aprobarse(en este caso las votos si deben ser mas del doble de los no)
         require(propuesta.numeroSi > propuesta.numeroNo * 2, "No hay suficients votos");
  
         // Delegate call en lugar de llamar a la función
+        
         IPayload(propuesta.payload).execute();
  
         propuesta.ejecutado = true;
