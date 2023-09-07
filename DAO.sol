@@ -48,16 +48,5 @@ contract Governance {
         //se evalua que el voto no sea mayor que 3, si lo es seria erroneo
         require(voto < 3, "Voto incorrecto");
  
-        //se asocia capa voto con un valor de 0 a 2 y se va incrementando su cantidad dentro de propuesta
-        if (voto == 0) {
-            propuesta.numeroSi++;
-        } else if (voto == 1) {
-            propuesta.numeroNo++;
-        } else if (voto == 2) {
-            propuesta.numeroBlancos++;
-        }
- 
-        //se indica que esa direccion ya ha votado en el valor indicado dentro de prpuesta
-        propuesta.votado[msg.sender] = true;
-    }
+     
  
