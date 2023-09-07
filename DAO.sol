@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity 0.8.19;
- 
+ //interface del contrato Payload con la funcion que necesitamos para poder ejecutar la funcion si el resultado de los votos es si
 interface IPayload {
     function execute() external;
 }
  
 contract Governance {
  
- //Un struct Propuesta contiene todos los datos de la propuesta, le da estructura
+ //Un struct Propuesta contiene todos los datos de la propuesta
     struct Propuesta {
         address creador;
         string descripcion;
@@ -26,7 +26,7 @@ contract Governance {
     //variable que identifica a cada propuesta con un numero
     uint256 numPropuestas;
  
-    //funcion para crear propuestas que toma por parametro la descripcion y la direccion de payload
+    //funcion para crear propuestas que toma por parametro la descripcion y la direccion del contrato payload
     function crearPropuesta(
         string calldata descripcion,
         address payload
@@ -70,10 +70,9 @@ contract Governance {
         //evalua que el numero de votos positivos sea suficiente para aprobarse(en este caso las votos si deben ser mas del doble de los no)
         require(propuesta.numeroSi > propuesta.numeroNo * 2, "No hay suficients votos");
  
-        // Delegate call en lugar de llamar a la función
-        
-        IPayload(propuesta.payload).execute();
- 
+        // Ejecutar la propuesra, realmente habria que hacer Delegate call en lugar de llamar a la función
+        IPayload(propuesta.payload).execute();//se envuelve la direccion de payload en la interface y se llama a execute()
+        //se da valor ejecutado positivo la propuesta
         propuesta.ejecutado = true;
     }
  
