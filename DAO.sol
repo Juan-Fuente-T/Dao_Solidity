@@ -62,4 +62,16 @@ contract Governance {
     }
  
      
+ function ejecutarPropuesta(uint256 id) public {
+        Propuesta storage propuesta = propuestas[id];
  
+        require(!propuesta.ejecutado, "Esta propuesta ya se ha ejecutado");
+        require(propuesta.numeroSi > propuesta.numeroNo * 2, "No hay suficients votos");
+ 
+        // Delegate call en lugar de llamar a la función
+        IPayload(propuesta.payload).execute();
+ 
+        propuesta.ejecutado = true;
+    }
+ 
+}
