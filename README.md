@@ -27,7 +27,7 @@ function voteProposal(uint256 id, uint256 vote) public;
 - If a proposal has received enough positive votes, it can be executed using the executeProposal function. 
 This will execute the payload contract associated with the proposal. For example:
 
-function executeProposal(uint256 id) public;
+IPayload(propuesta.payload).execute();
 
 ## Contribution
 Contributions are welcome. If you wish to contribute to this contract or report issues, you can do so through pull requests or issue reports in this repository.
