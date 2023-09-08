@@ -1,5 +1,6 @@
 # Contrato Governance
 
+
 El contrato "Governance" es un sistema de gobernanza básico implementado en Solidity que permite a los usuarios crear y votar propuestas. Cada propuesta tiene un creador, una descripción, y puede estar vinculada a un contrato externo (payload) que se ejecutará si la propuesta es aprobada. Los usuarios pueden votar a favor, en contra o en blanco en cada propuesta.
 
 ## Funcionalidades
