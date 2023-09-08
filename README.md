@@ -21,7 +21,7 @@ function createProposal(string calldata description, address payload) public;
 Vote on a Proposal
 To vote on an existing proposal, use the voteProposal function by providing the proposal's ID and your vote (0 for yes, 1 for no, 2 for blank). For example:
 
-solidity
+```solidity
 Copy code
 function voteProposal(uint256 id, uint256 vote) public;
 Execute a Proposal
