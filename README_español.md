@@ -26,7 +26,7 @@ Para votar en una propuesta existente, utiliza la función votarPropuesta propor
 function votarPropuesta(uint256 id, uint256 voto) public;
 ```
 
-###Ejecutar una Propuesta
+### Ejecutar una Propuesta
 Si una propuesta ha recibido suficientes votos positivos, puede ser ejecutada utilizando la función ejecutarPropuesta. Esto ejecutará el contrato payload asociado a la propuesta. Por ejemplo:
 
 ``` javascript
