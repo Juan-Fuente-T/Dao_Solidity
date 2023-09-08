@@ -16,24 +16,22 @@ The "Governance" contract is a basic governance system implemented in Solidity t
 
 To create a proposal, use the `createProposal` function, providing a description and the address of the payload contract (if necessary). For example:
 
-```solidity
+```
 function createProposal(string calldata description, address payload) public;
 Vote on a Proposal
 To vote on an existing proposal, use the voteProposal function by providing the proposal's ID and your vote (0 for yes, 1 for no, 2 for blank). For example:
 
-```solidity
-Copy code
+```
 function voteProposal(uint256 id, uint256 vote) public;
 Execute a Proposal
 If a proposal has received enough positive votes, it can be executed using the executeProposal function. This will execute the payload contract associated with the proposal. For example:
 
-solidity
-Copy code
+
 function executeProposal(uint256 id) public;
 Contribution
 Contributions are welcome. If you wish to contribute to this contract or report issues, you can do so through pull requests or issue reports in this repository.
 
-License
+### License
 This contract is distributed under the GNU General Public License (GPL-3.0).
 
 
